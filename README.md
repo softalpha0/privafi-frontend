@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# PrivaFi Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript frontend for [PrivaFi](https://github.com/softalpha0/PrivaFi) — a confidential DeFi suite built on the Zama FHEVM protocol.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This frontend connects to three FHE-powered smart contracts deployed on Sepolia testnet, enabling users to:
 
-## React Compiler
+- **Check credit eligibility** without revealing wallet balance or transaction history
+- **Set and view encrypted salaries** where only the intended employee can decrypt their pay
+- **Prove portfolio thresholds** without disclosing actual holdings
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Deployed Contracts (Sepolia)
 
-## Expanding the ESLint configuration
+| Contract | Address |
+|---|---|
+| PrivateCreditScore | `0xaa7D007ede04C1c52D7cc95A8357813c394f3af6` |
+| ConfidentialPayroll | `0x832E4087cf2a7115adc74137644AdcFb76B3A0Fd` |
+| HiddenPortfolio | `0x4708F4c5Afc818B9cF42c1652666aC67034866ae` |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Setup
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js 20+
+- MetaMask with Sepolia testnet configured
+- Sepolia ETH (free from https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Run locally
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open http://localhost:5173 and connect your MetaMask wallet on Sepolia.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React 19 + TypeScript
+- Vite
+- ethers.js v6
+- MetaMask wallet integration
+
+## Related
+
+- [PrivaFi Smart Contracts](https://github.com/softalpha0/PrivaFi)
+- [Zama FHEVM](https://docs.zama.ai/fhevm)
+- [Zama Developer Program](https://www.zama.ai/developer-program)
