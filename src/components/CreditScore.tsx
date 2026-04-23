@@ -3,7 +3,7 @@ import { Contract } from "ethers";
 import { connectWallet } from "../contracts/wallet";
 import { ADDRESSES, CREDIT_SCORE_ABI } from "../contracts/addresses";
 
-export default function CreditScore({ address }: { address: string }) {
+export default function CreditScore({ address: _address }: { address: string }) {
   const [balance, setBalance] = useState("");
   const [txCount, setTxCount] = useState("");
   const [result, setResult] = useState<null | string>(null);

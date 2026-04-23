@@ -3,7 +3,7 @@ import { Contract } from "ethers";
 import { connectWallet } from "../contracts/wallet";
 import { ADDRESSES, PORTFOLIO_ABI } from "../contracts/addresses";
 
-export default function Portfolio({ address }: { address: string }) {
+export default function Portfolio({ address: _address }: { address: string }) {
   const [balance, setBalance] = useState("");
   const [threshold, setThreshold] = useState("");
   const [registered, setRegistered] = useState(false);
