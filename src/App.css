@@ -412,3 +412,18 @@ section h2 {
   color: #fff;
   border-color: #555;
 }
+
+.claim-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #0a1628;
+  border: 1px solid #1a3a5c;
+  border-radius: 8px;
+}
+
+.claim-info {
+  font-size: 0.95rem;
+  color: #7ab3d4;
+}
