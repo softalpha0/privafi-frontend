@@ -52,10 +52,10 @@ export default function Payroll({ address }: { address: string }) {
     try {
       const { signer } = await connectWallet();
       const contract = new Contract(ADDRESSES.ConfidentialPayroll, PAYROLL_ABI, signer);
-      const result = await contract.getSalary(employerAddress, address);
-      const hasValue = result && result !== "0x0000000000000000000000000000000000000000000000000000000000000000";
-      setMyPay(hasValue
-        ? "Your encrypted salary record exists on-chain. Full decryption requires the Zama relayer SDK — your value is private and only accessible to you."
+      const result = await contract.getMySalary(employerAddress);
+      const salaryValue = Number(result);
+      setMyPay(salaryValue > 0
+        ? `Your salary: $${salaryValue.toLocaleString()} / month — decrypted from on-chain encrypted record.`
         : "No salary record found. Ask your employer to set your salary first.");
     } catch (e: any) {
       setError(e.message || "Could not fetch salary");
